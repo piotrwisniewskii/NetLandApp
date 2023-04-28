@@ -6,7 +6,7 @@ using System.Text;
 
 namespace NetLandApp.Services
 {
-    public class CsvService
+    public class CsvService : ICsvService
     {
         public IEnumerable<Order> Read(string filePath)
         {

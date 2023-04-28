@@ -7,10 +7,10 @@ namespace NetLandApp.NetLandApp.Commands.GetOrder
 {
     public class GetOrderHandler : IRequestHandler<GetOrderQuery, IEnumerable<Order>>
     {
-        private readonly CsvService _csvService;
+        private readonly ICsvService _csvService;
         private readonly IConfiguration _configuration;
 
-        public GetOrderHandler(CsvService csvService, IConfiguration configuration)
+        public GetOrderHandler(ICsvService csvService, IConfiguration configuration)
         {
             _csvService = csvService;
             _configuration = configuration;
@@ -18,7 +18,7 @@ namespace NetLandApp.NetLandApp.Commands.GetOrder
 
         public Task<IEnumerable<Order>> Handle(GetOrderQuery request, CancellationToken cancellationToken)
         {
-            string filePath = _configuration.GetValue<string>("OrdersCsvPath");
+            string filePath = _configuration.GetValue<string>("OrderCsvPath");
             var orders = _csvService.Read(filePath);
 
             if (!string.IsNullOrEmpty(request.Number))
