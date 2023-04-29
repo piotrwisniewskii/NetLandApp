@@ -1,6 +1,8 @@
+using Autofac.Core;
 using Microsoft.Extensions.DependencyInjection;
 using NetLandApp.NetLandApp.Commands.GetOrder;
 using NetLandApp.Services;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,11 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICsvService, CsvService>();
-builder.Services.AddMediatR(config =>
-{
-    config.AsScoped();
-    config.WithAssemblies(typeof(GetOrderHandler).Assembly);
-});
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
 var app = builder.Build();
 
