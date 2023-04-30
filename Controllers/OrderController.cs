@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NetLandApp.Models;
 using NetLandApp.NetLandApp.Queries;
 
 namespace NetLandApp.Controllers
@@ -16,7 +17,7 @@ namespace NetLandApp.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] GetOrderQuery query)
+        public async Task<IActionResult> Get([FromQuery] CsvVM query)
         {
             var orders = await _mediator.Send(query);
             return Ok(orders);
