@@ -1,11 +1,10 @@
 ﻿using MediatR;
 using NetLandApp.Models;
-using NetLandApp.NetLandApp.Queries;
 using NetLandApp.Services;
 
 namespace NetLandApp.NetLandApp.Commands.GetOrder
 {
-    public class GetOrderHandler : IRequestHandler<GetOrderQuery, IEnumerable<Order>>
+    public class GetOrderHandler : IRequestHandler<CsvVM, IEnumerable<Order>>
     {
         private readonly ICsvService _csvService;
         private readonly IConfiguration _configuration;
@@ -16,7 +15,7 @@ namespace NetLandApp.NetLandApp.Commands.GetOrder
             _configuration = configuration;
         }
 
-        public Task<IEnumerable<Order>> Handle(GetOrderQuery request, CancellationToken cancellationToken)
+        public Task<IEnumerable<Order>> Handle(CsvVM request, CancellationToken cancellationToken)
         {
             string filePath = _configuration.GetValue<string>("OrderCsvPath");
             var orders = _csvService.Read(filePath);
