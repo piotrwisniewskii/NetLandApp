@@ -10,13 +10,11 @@ namespace NetLandApp.Services
     {
         public IEnumerable<Order> Read(string filePath)
         {
-            using var reader = new StreamReader(filePath, Encoding.UTF8);
-            var config = new CsvConfiguration(CultureInfo.InvariantCulture);
-
-            using var csv = new CsvReader(reader, config);
-            csv.Context.TypeConverterOptionsCache.GetOptions<DateTime>().Formats = new[] { "dd.MM.yyyy" };
-
-            return csv.GetRecords<Order>().ToList();
+            using var reader = new StreamReader(filePath);
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            csv.Context.RegisterClassMap<OrderClassMap>();
+            var records = csv.GetRecords<Order>().ToList();
+            return records;
         }
     }
 }
