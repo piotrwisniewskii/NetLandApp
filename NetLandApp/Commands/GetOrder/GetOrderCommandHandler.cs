@@ -17,25 +17,7 @@ namespace NetLandApp.NetLandApp.Commands.GetOrder
 
         public Task<IEnumerable<Order>> Handle(CsvVM request, CancellationToken cancellationToken)
         {
-            string filePath = _configuration.GetValue<string>("OrderCsvPath");
-            var orders = _csvService.Read(filePath);
-
-            if (!string.IsNullOrEmpty(request.Number))
-            {
-                orders = orders.Where(o => o.Number == request.Number);
-            }
-
-            if (request.OrderDateFrom.HasValue && request.OrderDateTo.HasValue)
-            {
-                orders = orders.Where(o => o.OrderDate >= request.OrderDateFrom.Value && o.OrderDate <= request.OrderDateTo.Value);
-            }
-
-            if (request.ClientCodes != null && request.ClientCodes.Any())
-            {
-                orders = orders.Where(o => request.ClientCodes.Contains(o.ClientCode));
-            }
-
-            return Task.FromResult(orders);
+            throw new NotImplementedException();
         }
     }
 

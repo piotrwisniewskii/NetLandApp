@@ -16,7 +16,8 @@ namespace NetLandApp.NetLandApp.Queries
         }
         public Task<IEnumerable<Order>> Handle(CsvVM request, CancellationToken cancellationToken)
         {
-            string filePath = _configuration.GetValue<string>("OrderCsvPath");
+            string filePath = _configuration.GetValue<string>("CSVSettings:OrderCsvPath");
+
             var orders = _csvService.Read(filePath);
 
             if (!string.IsNullOrEmpty(request.Number))

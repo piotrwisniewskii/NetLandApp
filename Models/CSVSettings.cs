@@ -2,7 +2,7 @@
 {
     public class CSVSettings
     {
-        public string FilePath { get; set; }
+        public string OrderCsvPath { get; set; }
     }
 
 }
