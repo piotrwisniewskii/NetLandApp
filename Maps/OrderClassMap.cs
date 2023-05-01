@@ -1,4 +1,5 @@
 ﻿using CsvHelper.Configuration;
+using CsvHelper.TypeConversion;
 using NetLandApp.Models;
 using System.Globalization;
 
@@ -7,14 +8,14 @@ public class OrderClassMap : ClassMap<Order>
     public OrderClassMap()
     {
         AutoMap(CultureInfo.InvariantCulture);
-        Map(m => m.Number).Index(0);
-        Map(m => m.ClientCode).Index(1);
-        Map(m => m.ClientName).Index(2);
-        Map(m => m.OrderDate).Index(3);
-        Map(m => m.ShipmentDate).Index(4);
-        Map(m => m.Quantity).Index(5);
-        Map(m => m.Confirmed).Index(6);
-        Map(m => m.Value).Index(7);
+        Map(m => m.Number);
+        Map(m => m.ClientCode);
+        Map(m => m.ClientName);
+        Map(m => m.OrderDate);
+        Map(m => m.ShipmentDate);
+        Map(m => m.Quantity);
+        Map(m => m.Confirmed);
+        Map(m => m.Value);
     }
 }
 

@@ -11,7 +11,10 @@ namespace NetLandApp.Extensions
         {
             services.AddMediatR(typeof(GetOrderCommand));
             services.AddScoped<ICsvService, CsvService>();
-            services.Configure<CSVSettings>(configuration.GetSection("CSVSettings"));
+            services.Configure<CSVSettings>(options =>
+            {
+                options.OrderCsvPath = configuration.GetValue<string>("CSVSettings:OrderCsvPath");
+            });
         }
     }
 

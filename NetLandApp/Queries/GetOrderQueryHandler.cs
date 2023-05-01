@@ -1,9 +1,6 @@
 ﻿using MediatR;
 using NetLandApp.Models;
 using NetLandApp.Services;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace NetLandApp.NetLandApp.Queries
 {
