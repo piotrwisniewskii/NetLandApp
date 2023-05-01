@@ -1,6 +1,9 @@
 ﻿using MediatR;
 using NetLandApp.Models;
 using NetLandApp.Services;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace NetLandApp.NetLandApp.Queries
 {
@@ -14,7 +17,8 @@ namespace NetLandApp.NetLandApp.Queries
             _csvService = csvService;
             _configuration = configuration;
         }
-        public Task<IEnumerable<Order>> Handle(CsvVM request, CancellationToken cancellationToken)
+
+        public async Task<IEnumerable<Order>> Handle(CsvVM request, CancellationToken cancellationToken)
         {
             string filePath = _configuration.GetValue<string>("CSVSettings:OrderCsvPath");
 
@@ -35,7 +39,7 @@ namespace NetLandApp.NetLandApp.Queries
                 orders = orders.Where(o => request.ClientCodes.Contains(o.ClientCode));
             }
 
-            return Task.FromResult(orders);
+            return await Task.FromResult(orders);
         }
     }
 }

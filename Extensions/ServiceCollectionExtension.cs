@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.Extensions.Configuration;
 using NetLandApp.Models;
 using NetLandApp.NetLandApp.Commands.GetOrder;
 using NetLandApp.Services;

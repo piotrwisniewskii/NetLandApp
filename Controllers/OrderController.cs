@@ -1,8 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NetLandApp.Models;
-using NetLandApp.NetLandApp.Commands.GetOrder;
-using NetLandApp.NetLandApp.Queries;
 
 namespace NetLandApp.Controllers
 {
