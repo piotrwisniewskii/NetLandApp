@@ -7,7 +7,7 @@ namespace NetLandApp.Helpers
 {
     public class DateTimeConverter : ITypeConverter
     {
-        private const string DateFormat = "d.M.yyyy";
+        private const string DateFormat = "dd.MM.yyyy";
 
         public object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData)
         {
