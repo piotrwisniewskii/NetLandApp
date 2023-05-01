@@ -10,7 +10,7 @@ For api to works correctly we CSV file should be formated like this:
 -Date format is dd.MM.yyyy.
 -Boolean values are represented as 1 or 0.
 
-Use user secrets to determine csv file path, or set in directly in appsetting.json like this:
+Use user secrets to determine csv file path, or set directly in appsetting.json:
 
 {
   "CSVSettings": {
