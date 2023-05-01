@@ -3,8 +3,7 @@ using NetLandApp.Models;
 
 namespace NetLandApp.NetLandApp.Commands.GetOrder
 {
-    public class GetOrderCommand : Order, IRequest
+    public class GetOrderCommand : IRequest<IEnumerable<Order>>
     {
-
     }
 }

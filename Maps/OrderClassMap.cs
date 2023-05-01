@@ -17,3 +17,4 @@ public class OrderClassMap : ClassMap<Order>
         Map(m => m.Value).Index(7);
     }
 }
+

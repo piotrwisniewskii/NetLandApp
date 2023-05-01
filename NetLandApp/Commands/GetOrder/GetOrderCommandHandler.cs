@@ -4,20 +4,20 @@ using NetLandApp.Services;
 
 namespace NetLandApp.NetLandApp.Commands.GetOrder
 {
-    public class GetOrderHandler : IRequestHandler<CsvVM, IEnumerable<Order>>
+    public class GetOrderCommandHandler : IRequestHandler<GetOrderCommand, IEnumerable<Order>>
     {
         private readonly ICsvService _csvService;
         private readonly IConfiguration _configuration;
 
-        public GetOrderHandler(ICsvService csvService, IConfiguration configuration)
+        public GetOrderCommandHandler(ICsvService csvService, IConfiguration configuration)
         {
             _csvService = csvService;
             _configuration = configuration;
         }
 
-        public Task<IEnumerable<Order>> Handle(CsvVM request, CancellationToken cancellationToken)
+        public Task<IEnumerable<Order>> Handle(GetOrderCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+           throw new Exception();
         }
     }
 
