@@ -2,6 +2,7 @@
 using CsvHelper.Configuration;
 using NetLandApp.Models;
 using System.Globalization;
+using System.Text;
 
 namespace NetLandApp.Services
 {
@@ -12,10 +13,10 @@ namespace NetLandApp.Services
             var configuration = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 Delimiter = ",",
-                Quote = '"',
                 PrepareHeaderForMatch = args => args.Header.ToLower(),
+
             };
-            using var reader = new StreamReader(filePath);
+            using var reader = new StreamReader(filePath, Encoding.UTF8);
             using var csv = new CsvReader(reader, configuration);
 
             csv.Context.RegisterClassMap<OrderClassMap>();

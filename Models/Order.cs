@@ -8,6 +8,7 @@ namespace NetLandApp.Models
 
         public string Number { get; set; }
         public string ClientCode { get; set; }
+
         public string ClientName { get; set; }
 
         [CsvHelper.Configuration.Attributes.TypeConverter(typeof(DateTimeConverter))]
